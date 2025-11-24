@@ -1,0 +1,31 @@
+{
+	"type": "module",
+	"browserslist": "baseline widely available",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"format": "biome format --write",
+		"check": "biome check && astro check && tsc --noEmit"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "latest",
+		"@astrojs/svelte": "latest",
+		"astro": "latest",
+		"svelte": "latest"
+	},
+	"devDependencies": {
+		"@astrojs/check": "latest",
+		"@biomejs/biome": "latest",
+		"@iconify/json": "latest",
+		"browserslist": "latest",
+		"fontaine": "latest",
+		"lightningcss": "latest",
+		"typescript": "latest",
+		"unocss": "latest"
+	},
+	"overrides": {
+		"vite": "latest"
+	},
+	"$schema": "https://json.schemastore.org/package"
+}
