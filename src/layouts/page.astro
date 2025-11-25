@@ -1,14 +1,15 @@
 ---
+import Ipod from "@features/Ipod.astro";
 import { ClientRouter } from "astro:transitions";
 
 const { pathname } = Astro.url;
 
-const title = "Marika Bergman";
+const title = "Tactus";
 const description = "Lorem ipsum dolor sit amet.";
 console.log(pathname);
 ---
 
-<html lang="en">
+<html lang="en" class="font-sans text-brand-text">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
@@ -18,7 +19,20 @@ console.log(pathname);
 		<ClientRouter/>
 	</head>
 
-	<body class="w-dvw h-dvh p-xl">
-		<slot/>
+	<body class="w-dvw h-dvh p-3xl">
+		<main class="size-full flex flex-col items-center">
+			<h1
+				class="text-xl font-playful uppercase tracking-widest text-align-center"
+			>
+				Tactus
+			</h1>
+			<slot name="outer"/>
+			<div class="flex h-full items-center">
+				<Ipod>
+					<slot/>
+					<slot name="checkbox" slot="checkbox"/>
+				</Ipod>
+			</div>
+		</main>
 	</body>
 </html>

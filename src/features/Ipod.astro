@@ -1,4 +1,20 @@
----
-console.log("ipod");
----
+<section class="border p-lg bg-brand-ipod rounded-sm">
+	<div class="flex flex-col gap-xl items-center">
+		<menu
+			id="screen"
+			class="flex flex-col justify-center  size-56 px-1 bg-white shadow-[0_0_4px_0_rgba(0,0,0,0.25)_inset]"
+		>
+			<slot/>
+		</menu>
 
+		<div
+			class="grid place-content-center size-36 rounded-full bg-white shadow-[0_0_4px_0_rgba(0,0,0,0.25)]"
+		>
+			<div
+				class="grid place-content-center size-20 bg-brand-ipod rounded-full shadow-[0_0_4px_0_rgba(0,0,0,0.25)_inset]"
+			>
+				<slot name="checkbox"/>
+			</div>
+		</div>
+	</div>
+</section>

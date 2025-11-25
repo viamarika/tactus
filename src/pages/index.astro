@@ -3,9 +3,20 @@ import PageLayout from "@layouts/page.astro";
 ---
 
 <PageLayout>
-	<main class="size-full flex flex-col items-center">
-		<div class="flex flex-col gap-2 uppercase tracking-widest">
-			<h1 class="text-xl font-playful">Tactus</h1>
-		</div>
-	</main>
+	<li>
+		<a
+			href="/play"
+			class="hover:(bg-brand-hover text-white) focus:(bg-brand-hover text-white outline-0) block w-full text-align-left p-1"
+		>
+			New game
+		</a>
+	</li>
+	<li>
+		<a
+			href="/howto"
+			class="hover:(bg-brand-hover text-white)  focus:(bg-brand-hover text-white outline-0) block w-full text-align-left p-1"
+		>
+			How to play
+		</a>
+	</li>
 </PageLayout>

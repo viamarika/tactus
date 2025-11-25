@@ -1,22 +1,18 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file } from "astro/loaders";
 
-const Project = z.object({
-	title: z.string(),
-	description: z.string(),
-	link: z.string().optional(),
-	repository: z.string(),
-	role: z.string(),
+const Song = z.object({
+	id: z.number(),
 	type: z.string(),
-	technologies: z.string().array(),
-	text: z.string().array(),
+	title: z.string(),
+	path: z.string()
 });
 
-export type Project = z.infer<typeof Project>;
+export type Song = z.infer<typeof Song>;
 
-const projects = defineCollection({
-	loader: glob({ pattern: "**/*.mdx", base: "./src/data/projects" }),
-	schema: Project,
+const songs = defineCollection({
+	loader: file("src/data/songs.json"),
+	schema: Song,
 });
 
-export const collections = { projects };
+export const collections = { songs  };

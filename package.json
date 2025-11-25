@@ -12,6 +12,7 @@
 		"@astrojs/mdx": "latest",
 		"@astrojs/svelte": "latest",
 		"astro": "latest",
+		"nanostores": "^1.1.0",
 		"svelte": "latest"
 	},
 	"devDependencies": {
