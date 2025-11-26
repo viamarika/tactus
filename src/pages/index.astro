@@ -1,22 +1,26 @@
 ---
-import PageLayout from "@layouts/page.astro";
+import Ipod from "@components/ipod.svelte";
+
+const title = "Tactus";
+const description = "Lorem ipsum dolor sit amet.";
 ---
 
-<PageLayout>
-	<li>
-		<a
-			href="/play"
-			class="hover:(bg-brand-hover text-white) focus:(bg-brand-hover text-white outline-0) block w-full text-align-left p-1"
-		>
-			New game
-		</a>
-	</li>
-	<li>
-		<a
-			href="/howto"
-			class="hover:(bg-brand-hover text-white)  focus:(bg-brand-hover text-white outline-0) block w-full text-align-left p-1"
-		>
-			How to play
-		</a>
-	</li>
-</PageLayout>
+<html lang="en" class="font-mono text-brand-text">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content={description}>
+		<link rel="icon" type="image/svg+xml" href="https://placehold.co/32">
+		<title>{title}</title>
+	</head>
+
+	<body class="w-dvw h-dvh flex flex-col">
+		<header class="text-center p-xl">
+			<h1 class="text-xl font-playful uppercase tracking-widest">{title}</h1>
+		</header>
+
+		<main class="size-full grid place-content-center">
+			<Ipod/>
+		</main>
+	</body>
+</html>
