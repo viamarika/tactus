@@ -16,6 +16,11 @@
     path: string;
   };
 
+  type Results = {
+    id: string;
+    guessResults: { title: string; isCorrect: boolean; guessedSong: string }[];
+  };
+
   const shuffle = (songs: Songs[]) => {
     let len = songs.length;
 
@@ -35,28 +40,30 @@
   const songsData: Songs[] = shuffle([
     {
       id: crypto.randomUUID(),
-      title: "Billie Jean",
-      path: "/we-will-rock-you.wav",
+      title: "Seven Nation Army",
+      path: "/seven-nation-army-melody.wav",
     },
     {
       id: crypto.randomUUID(),
       title: "We Will Rock You",
-      path: "/we-will-rock-you.wav",
+      path: "/we-will-rock-you-beats.wav",
+    },
+
+    {
+      id: crypto.randomUUID(),
+      title: "Somebody That I Used to Know",
+      path: "/somebody-that-i-used-to-know-melody.wav",
+    },
+
+    {
+      id: crypto.randomUUID(),
+      title: "Eye of the Tiger",
+      path: "/eye-of-the-tiger-drums.wav",
     },
     {
       id: crypto.randomUUID(),
       title: "We Wish You a Merry Christmas",
-      path: "/we-will-rock-you.wav",
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "ABC - Jacksons 5",
-      path: "/we-will-rock-you.wav",
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "Somebody That I Used to Know",
-      path: "/we-will-rock-you.wav",
+      path: "/we-wish-you-a-merry-christmas-melody.wav",
     },
   ]);
 
@@ -64,6 +71,11 @@
     state: "main_menu",
     round: 0,
     score: 0,
+  });
+
+  let results = $state<Results>({
+    id: crypto.randomUUID(),
+    guessResults: [],
   });
 
   let correct = $state(false);
@@ -88,16 +100,44 @@
     } else {
       correct = false;
     }
+
+    results.guessResults = [
+      ...results.guessResults,
+      {
+        title: currentSong.title,
+        isCorrect: correct,
+        guessedSong:
+          songs.find((s) => s.id === id)?.title.toString() ?? "Unknown",
+      },
+    ];
+
     if (gameState.round === songs.length - 1) {
+      sendResults(results);
       gameState.state = "post_game_menu";
     } else {
       gameState.state = "guess_result";
     }
   };
+
+  const sendResults = async (results: Results) => {
+    const res = await fetch("/postData", {
+      method: "POST",
+      body: JSON.stringify(results),
+    });
+
+    if (!res.ok) {
+      console.error("Error:", res.statusText);
+    } else {
+      await res.json();
+      console.log("Success ", res.status);
+    }
+  };
 </script>
 
-<section class="h-104mm w-62mm flex flex-col rounded-2xl b p-sm">
-  <section class="aspect-5/4 rounded-md b relative text-sm">
+<section class="h-104mm w-62mm flex flex-col rounded-2xl b p-sm bg-brand-ipod">
+  <section
+    class="aspect-5/4 rounded-md relative text-sm bg-white shadow-[0_0_4px_0_rgba(0,0,0,0.25)_inset]"
+  >
     {#if gameState.state === "in_game" || gameState.state === "guess_result"}
       <section class="p-1 absolute w-full flex justify-between text-xs">
         <p>round {gameState.round + 1}</p>
@@ -134,8 +174,9 @@
         </li>
       {:else if gameState.state === "tutorial_menu"}
         <li>1. Connect actuator.</li>
-        <li>2. Feel vibrations.</li>
-        <li>3. Guess the song.</li>
+        <li>2. Turn volume to 100%.</li>
+        <li>3. Feel vibrations.</li>
+        <li>4. Guess the song.</li>
       {:else if gameState.state === "post_game_menu"}
         <li>Game Over</li>
 
@@ -171,6 +212,7 @@
           type="button"
           onclick={() => {
             gameState.round += 1;
+            isPlaying = false;
             gameState.state = "in_game";
           }}
           class="button-style"
@@ -194,8 +236,10 @@
   </section>
 
   <section class="grow grid place-content-center">
-    <section class="size-36 rounded-full b p-4xl">
-      <section class="size-full rounded-full grid place-content-center b">
+    <section class="size-36 rounded-full b p-4xl bg-white">
+      <section
+        class="size-full rounded-full grid place-content-center b bg-brand-ipod"
+      >
         {#if gameState.state === "in_game"}
           <audio
             id="audio-source"
@@ -207,10 +251,12 @@
           <!-- svelte-ignore element_invalid_self_closing_tag -->
           <button
             type="button"
-            class={`size-10 ${isPlaying ? "i-ph:pause-thin" : "i-ph:play-thin"}`}
+            class={`size-14 ${isPlaying ? "i-mdi:pause" : "i-mdi:play"} bg-white`}
             aria-label="Play"
             onclick={() => {
-              !isPlaying ? player.play() : player.pause();
+              (!isPlaying ? player.play() : player.pause(),
+                (player.currentTime = 0));
+
               isPlaying = !isPlaying;
             }}
           />
