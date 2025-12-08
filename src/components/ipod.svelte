@@ -150,7 +150,7 @@
         <button
           type="button"
           onclick={() => (gameState.state = "main_menu")}
-          class="button-style">Back</button
+          class="button-style rounded-t-md">Back</button
         >
       {/if}
     </section>
@@ -215,7 +215,7 @@
             isPlaying = false;
             gameState.state = "in_game";
           }}
-          class="button-style"
+          class="button-style rounded-b-md"
         >
           Next Level
         </button>
@@ -229,7 +229,7 @@
               score: 0,
             };
           }}
-          class="button-style">Back to Menu</button
+          class="button-style rounded-b-md">Back to Menu</button
         >
       {/if}
     </section>
