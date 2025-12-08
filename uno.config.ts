@@ -31,7 +31,7 @@ export default defineConfig({
 	theme: {
 		colors: {
 			brand: {
-				ipod: "#E3EDD7",
+				ipod: "#EC5298",
 				hover: "#0098E6",
 				text: "oklch(0.3 0 0)",
 			},
