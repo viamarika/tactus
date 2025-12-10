@@ -10,8 +10,7 @@ export default defineConfig({
 
 		presetWebFonts({
 			fonts: {
-				playful: "Coming Soon",
-				sans: "Sometype Mono",
+				form: "Roboto",
 			},
 		}),
 

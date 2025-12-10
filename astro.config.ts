@@ -5,27 +5,31 @@ import { default as browserslist } from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import { FontaineTransform } from "fontaine";
 
-export default defineConfig({
-	vite: {
-		plugins: [
-			FontaineTransform.vite({
-				fallbacks: {},
-			}),
-		],
+import vercel from "@astrojs/vercel";
 
-		css: {
-			transformer: "lightningcss",
-			lightningcss: {
-				targets: browserslistToTargets(browserslist()),
-			},
-		},
+export default defineConfig({
+  vite: {
+      plugins: [
+          FontaineTransform.vite({
+              fallbacks: {},
+          }),
+      ],
+
+      css: {
+          transformer: "lightningcss",
+          lightningcss: {
+              targets: browserslistToTargets(browserslist()),
+          },
+      },
 	},
 
-	integrations: [
-		uno({
-			injectReset: true,
-		}),
+  integrations: [
+      uno({
+          injectReset: true,
+      }),
 
-		svelte(),
+      svelte(),
 	],
+
+  adapter: vercel(),
 });
