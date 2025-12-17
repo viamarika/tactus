@@ -222,10 +222,6 @@
 
     <p>This study will take approximately 5-10 minutes.</p>
 
-    <p>
-      If you encounter any issues or have any questions, please contact
-      marika.bergman@tuni.fi
-    </p>
     <h3><b>Consent Form</b></h3>
 
     <p>

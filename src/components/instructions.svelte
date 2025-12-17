@@ -38,8 +38,6 @@
     }}>{isPlaying ? "testing..." : "click to test"}</button
   >
 
-  <p>If there are any issues, please contact marika.bergman@tuni.fi</p>
-
   <h4><b>During the Game:</b></h4>
   <ul class="flex flex-col gap-2">
     <li>
