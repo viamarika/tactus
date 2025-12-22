@@ -7,7 +7,6 @@
       | "pre_game_survey"
       | "instructions"
       | "main_menu"
-      | "tutorial_menu"
       | "in_game"
       | "guess_result"
       | "post_game_menu"
@@ -109,7 +108,7 @@
   const dummyData = shuffle([...dummySongs, ...songsData]);
 
   let gameState = $state<GameState>({
-    state: "consent_form",
+    state: "main_menu",
     round: 0,
     score: 0,
   });
@@ -215,9 +214,9 @@
     <p>
       Welcome to Tactus, a game that explores how effectively vibrotactile
       feedback can communicate musical information through the sense of touch.
-      The game was developed as a project for the Haptic Interaction (HTI.470)
-      course. Your participation will help evaluate the haptic signals created
-      for the game.
+      The game was developed as a project for the Haptic Interaction course.
+      Your participation will help evaluate the haptic signals created for the
+      game.
     </p>
 
     <p>This study will take approximately 5-10 minutes.</p>
@@ -456,7 +455,7 @@
   </form>
 {:else}
   <button class="absolute bottom-0 m-xs b-b" popovertarget="instructions">
-    {isOpen ? "Close" : "Instructions and contact info"}</button
+    {isOpen ? "Close" : "Instructions"}</button
   >
   <div
     id="instructions"
@@ -482,16 +481,6 @@
         </section>
       {/if}
 
-      <section class="absolute w-full">
-        {#if gameState.state === "tutorial_menu"}
-          <button
-            type="button"
-            onclick={() => (gameState.state = "main_menu")}
-            class="button-style rounded-t-md">Back</button
-          >
-        {/if}
-      </section>
-
       <ul class="size-full flex flex-col justify-center">
         {#if gameState.state === "main_menu"}
           <li>
@@ -501,19 +490,6 @@
               onclick={() => (gameState.state = "in_game")}>New Game</button
             >
           </li>
-          <li>
-            <button
-              type="button"
-              class="button-style"
-              onclick={() => (gameState.state = "tutorial_menu")}
-              >How to Play</button
-            >
-          </li>
-        {:else if gameState.state === "tutorial_menu"}
-          <li>1. Connect actuator.</li>
-          <li>2. Turn volume to 100%.</li>
-          <li>3. Feel vibrations.</li>
-          <li>4. Guess the song.</li>
         {:else if gameState.state === "post_game_menu"}
           <li>Game Over</li>
 
