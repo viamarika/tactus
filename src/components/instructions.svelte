@@ -8,7 +8,7 @@
   <p>
     Your task is to identify songs by feeling vibration patterns through your
     fingertips using the Basslet actuator. You'll feel the vibrations and choose
-    the correct song from three options.
+    the correct song from three options. There are 6 rounds in total.
   </p>
 
   <h4><b>Setup:</b></h4>
@@ -53,11 +53,4 @@
       for incorrect)
     </li>
   </ul>
-
-  <h4><b>Game Details:</b></h4>
-  <p>
-    The game consists of 6 rounds using songs from the pre-study survey.
-    Afterward, you'll see your total score and complete a short post-study
-    survey.
-  </p>
 </section>
