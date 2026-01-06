@@ -6,6 +6,7 @@ Web-based music recognition game where users identify songs through vibrotactile
 ![Astro](https://img.shields.io/badge/Astro-black?logo=astro)
 ![Svelte](https://img.shields.io/badge/Svelte-black?logo=svelte)
 ![Typescript](https://img.shields.io/badge/Typescript-black?logo=typescript)
+![Unocss](https://img.shields.io/badge/UnoCSS-black?logo=unocss)
 
 ![Tactus gameplay](./images/in-game.png)
 
