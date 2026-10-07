@@ -25,11 +25,11 @@ Popular songs are recognizable by their memorable motifs — short, distinctive 
 1. Clone this repository
 2. Install dependencies:
 ```
-npm install
+bun install
 ```
 3. Run dev server:
 ```
-npm run dev
+bun run dev
 ```
 4. Hardware setup
    - Connect Basslet actuator to your device's audio output
